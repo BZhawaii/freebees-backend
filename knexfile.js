@@ -1,6 +1,6 @@
 module.exports = {
   development: {
     client: 'postgresql',
-    connection: 'postrgres://localhost/my_life'
+    connection: 'postgres://localhost/freebees'
   }
 };
