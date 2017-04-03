@@ -1,3 +1,15 @@
-{{#each establishmentsGot}}
-  <h2>{{name}}</h2>
-{{/each}}
+
+  <ul class="list-group">
+    {{#each establishmentsGot}}
+    <li class="list-group-item">
+      <h2>{{name}}</h2>
+      <br>
+      <h4>Address: {{address}}</h4>
+      <br>
+      <p><b>About: </b>{{about}}</p>
+      <br>
+      <img style="height:300px;width:300px"src="{{imageURL}}" alt="this is an image of {{imageURL}}">
+      <br>
+    </li>
+    {{/each}}
+  </ul>
