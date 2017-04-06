@@ -1,15 +1,18 @@
 
 <ul class="list-group">
-  {{#each usersGot}}
-    <a href="/users/{{id}}" class="list-group-item">
+  {{#each freebeesGot}}
+    <a href="/freebees/{{id}}" class="list-group-item">
 
-      <h1>Username: {{username}}</h1>
-      <h4>Name: {{firstName}} {{lastName}}</h4>
-      <h4>Age: {{age}}</h4>
-      <h4>Sex: {{sex}}</h4>
+      <h1>{{name}}</h1>
+      <h4>Type: {{type}}</h4>
+      <h4>Category: {{category}}</h4>
+      <h4>Date:  {{date}}</h4>
+      <h4>Time:  {{time}}</h4>
     </a>
   {{/each}}
 </ul>
 
 
-<a type="button" class="btn btn-default btn-primary" href="/users/new">New user</a>
+<a type="button" class="btn btn-default btn-success" href="/freebees/new">New FreeBee</a>
+<br>
+<a type="button" class="btn btn-default btn-primary" href="/establishments">Go back to establishment page</a>

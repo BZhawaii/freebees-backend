@@ -1,0 +1,46 @@
+<form class="form" action="/freebees" method="post">
+
+  <div class="form-group">
+    <label for="freebeesName">Name</label>
+    <input value="{{name}}" type="text" class="form-control" id="freebeesName" placeholder="Enter a freebee name" name="name">
+  </div>
+
+  <div class="form-group">
+    <label for="type">Type</label>
+    <select selected="{{type}}" name="type" class="from-control" id="type">
+      {{#select type}}
+      <option value="">Select your type</option>
+      <option value="1">Free</option>
+      <option value="2">Buy One Get One Free</option>
+      {{/select}}
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label for="category">Category</label>
+    <select name="category" class="from-control" id="category">
+      {{#select category}}
+      <option value="">Select your category</option>
+      <option value="1">Beer</option>
+      <option value="2">Food</option>
+      <option value="1">Stuff</option>
+      <option value="1">Entertainment</option>
+      <option value="1">Kids Eat Free</option>
+      <option value="1">Admission</option>
+      {{/select}}
+    </select>  </div>
+
+  <div class="form-group">
+    <label style="color:red" for="date">Enter a new date</label>
+    <input value="{{date}}" type="date" class="form-control" id="date" placeholder="Enter a freebee date" name="date">
+  </div>
+
+  <div class="form-group">
+    <label style="color:red" for="time">Enter a new time</label>
+    <input value="{{time}}" type="time" class="form-control" id="time" placeholder="Enter a freebee time" name="time">
+  </div>
+
+  <button type="submit" class="btn btn-default btn-danger">Update</button>
+</form>
+
+<a type="button" class="btn btn-default btn-primary" href="/freebees">Go back to main page</a>
