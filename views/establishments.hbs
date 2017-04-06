@@ -1,15 +1,16 @@
 
+
   <ul class="list-group">
     {{#each establishmentsGot}}
-    <li class="list-group-item">
-      <h2>{{name}}</h2>
-      <br>
-      <h4>Address: {{address}}</h4>
-      <br>
-      <p><b>About: </b>{{about}}</p>
-      <br>
-      <img style="height:300px;width:300px"src="{{imageURL}}" alt="this is an image of {{imageURL}}">
-      <br>
-    </li>
+      <a href="/establishments/{{id}}" class="list-group-item">
+
+        <h1>Name: {{name}}</h1>
+        <h4>Address: {{address}}</h4>
+        <h4>About: {{about}}</h4>
+        <img style="height:300px;width:300px"src="{{imageURL}}" alt="this is an image of {{imageURL}}">
+      </a>
     {{/each}}
   </ul>
+
+
+  <a type="button" class="btn btn-default btn-primary" href="/establishments/new">New establishment</a>

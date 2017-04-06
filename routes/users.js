@@ -21,6 +21,10 @@ router.get('/', function(req, res, next) {
     })
 });  //closes router.get
 
+router.get('/new', function(req, res, next) {
+  res.render('newForm');
+});  //closes router.get
+
 router.get('/:id', function(req, res, next) {
   const id = req.params.id;
   if(typeof id != 'undefined') {
@@ -37,10 +41,6 @@ router.get('/:id', function(req, res, next) {
       message: 'Invalid id'
     })
   }
-});  //closes router.get
-
-router.get('/new', function(req, res, next) {
-  res.render('newForm');
 });  //closes router.get
 
 router.get('/:id/edit', (req, res) => {

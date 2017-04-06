@@ -1,0 +1,25 @@
+
+<form class="form" action="/establishments/{{id}}?_method=PUT" method="post">
+  <div class="form-group">
+    <label for="establishmentName">establishmentName</label>
+    <input value="{{name}}" type="text" class="form-control" id="establishmentName" placeholder="Enter the establishments name" name="name">
+  </div>
+  <div class="form-group">
+    <label for="establishmentPassword">establishmentPassword</label>
+    <input value="{{password}}" type="text" class="form-control" id="establishmentPassword" placeholder="Enter a password" name="password">
+  </div>
+  <div class="form-group">
+    <label for="address">address</label>
+    <input value="{{address}}" type="text" class="form-control" id="address" placeholder="Enter your address" name="address">
+  </div>
+  <div class="form-group">
+    <label for="imageURL">imageURL</label>
+    <input value="{{imageURL}}"type="url" class="form-control" id="imageURL" placeholder="Copy and paste the image URL" name="imageURL">
+  </div>
+  <div class="form-group">
+    <label for="about">Write about your establishment here</label>
+    <textarea value="{{about}}"type="text" class="form-control" id="about" placeholder="Write about your establishment" name="about">
+    </textarea>
+  </div>
+  <button type="submit" class="btn btn-default btn-success">Update</button>
+</form>

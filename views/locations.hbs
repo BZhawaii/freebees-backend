@@ -1,3 +1,12 @@
-{{#each locationsGot}}
-  <h2>{{name}}</h2>
-{{/each}}
+
+<ul class="list-group">
+  {{#each locationsGot}}
+    <a href="/locations/{{id}}" class="list-group-item">
+
+      <h1>Name: {{name}}</h1>
+    </a>
+  {{/each}}
+</ul>
+
+
+<a type="button" class="btn btn-default btn-primary" href="/locations/new">New location</a>
