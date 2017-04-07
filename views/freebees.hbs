@@ -3,13 +3,19 @@
   {{#each freebeesGot}}
     <a href="/freebees/{{id}}" class="list-group-item">
 
-      
-      <h1>{{freebee_name}}</h1>
-      <h2>At: {{name}}</h2>
-      <h4>Type: {{type}}</h4>
-      <h4>Category: {{category}}</h4>
-      <h4>Date:  {{date}}</h4>
-      <h4>Time:  {{time}}</h4>
+      <div class="card" style="width: 20rem;">
+        <div class="card-block">
+          <img style="height:200px;width:500px"class="card-img-side" src="{{imageURL}}" alt="{{name}}">
+          <h4 class="card-title">{{freebee_name}}</h4>
+          <p class="card-text">Type: {{type}}</p>
+          <p class="card-text">Company: {{name}}</p>
+          <p class="card-text">Category: {{category}}</p>
+          <p class="card-text">Date: {{date}}</p>
+          <p class="card-text">Start Time: {{startTime}}</p>
+          <p class="card-text">Stop Time: {{stopTime}}</p>
+          <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+        </div>
+      </div>
     </a>
   {{/each}}
 </ul>
