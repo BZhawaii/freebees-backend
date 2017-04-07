@@ -6,8 +6,9 @@ exports.up = function(knex, Promise) {
     table.string('name').notNullable();
     table.string('password').notNullable();
     table.string('email').notNullable();
-    table.string('address');
     table.string('www');
+    table.boolean('lockedOut').defaultTo(false);
+    table.string('address');
     table.string('lat');
     table.string('long');
     table.string('imageURL');
