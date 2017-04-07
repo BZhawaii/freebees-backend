@@ -55,7 +55,8 @@ router.post('/:id/freebees/new', (req, res, next) => {
       type: req.body.type,
       category: req.body.category,
       date: req.body.date,
-      time: req.body.time,
+      startTime: req.body.startTime,
+      stopTime: req.body.stopTime,
       establishment_id: req.params.id
     }
     console.log('this is freebee', freebee);
@@ -81,7 +82,9 @@ router.post('/', (req, res) => {
       password: req.body.password,
       address: req.body.address,
       about: req.body.about,
-      imageURL: req.body.imageURL,
+      email: req.body.email,
+      www: req.body.www,
+      imageURL: req.body.imageURL
     }
     knex('establishment')
       .insert(establishment, 'id')
