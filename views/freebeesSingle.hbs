@@ -5,15 +5,14 @@
     <h4>Category:  {{category}}</h4>
     <h4>Date:  {{date}}</h4>
     <h4>Time:  {{time}}</h4>
+    <!-- <h4>id:  {{establishment_id}}</h4> -->
 
   </div>
 
 </div>
 <form class="" action="/freebees/{{id}}?_method=DELETE" method="post">
-  <a href="/freebees/{{id}}/edit" type="button" class="btn btn-default btn-warning" name="button"> Edit FreeBee</a>
+  <a href="/freebees/{{id}}/edit" type="button" class="btn btn-default btn-warning" name="button">Edit FreeBee</a>
 
-  <button type="submit" class="btn btn-default btn-danger"> Delete FreeBee</button>
+  <a type="button" class="btn btn-default btn-primary" href="/establishments">Go back to main page</a>
+  <button type="submit" class="btn btn-default btn-danger">Delete FreeBee</button>
 </form>
-
-
-<a type="button" class="btn btn-default btn-primary" href="/freebees">Go back to main page</a>

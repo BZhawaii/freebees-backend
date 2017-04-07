@@ -8,6 +8,7 @@ exports.seed = function(knex, Promise) {
         firstName: 'Richard',
         lastName: 'Beese',
         password: '1234',
+        email: 'this@that.com',
         age: 47,
         sex: 'M'
       }, {
@@ -15,6 +16,7 @@ exports.seed = function(knex, Promise) {
         firstName: 'Arlene',
         lastName: 'Schmid',
         password: '1234',
+        email: 'this@that.com',
         age: 42,
         sex: 'F'
       }, {
@@ -22,6 +24,7 @@ exports.seed = function(knex, Promise) {
         firstName: 'Moku',
         lastName: 'Beese',
         password: '1234',
+        email: 'this@that.com',
         age: 8,
         sex: 'F'
       }, {
@@ -29,6 +32,7 @@ exports.seed = function(knex, Promise) {
         firstName: 'Hapa',
         lastName: 'Beese',
         password: '1234',
+        email: 'this@that.com',
         age: 2,
         sex: 'M'
       }]

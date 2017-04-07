@@ -13,8 +13,10 @@ function validForm(form) {
 /* GET home page. */
 router.get('/', function(req, res, next) {
   knex('freebee')
-    .select()
+    .select( '*', 'freebee.name AS freebee_name')
+    .join('establishment', 'freebee.establishment_id', 'establishment.id')
     .then(freebeesGot => {
+      console.log(freebeesGot);
       res.render('freebees', { freebeesGot: freebeesGot });
     })
 });  //closes router.get

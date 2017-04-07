@@ -5,7 +5,11 @@ exports.up = function(knex, Promise) {
     table.increments();
     table.string('name').notNullable();
     table.string('password').notNullable();
+    table.string('email').notNullable();
     table.string('address');
+    table.string('www');
+    table.string('lat');
+    table.string('long');
     table.string('imageURL');
     table.text('about');
   })

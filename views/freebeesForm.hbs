@@ -1,4 +1,4 @@
-<form class="form" action="/freebees" method="post">
+<form class="form" action="/establishments/{{id}}/freebees/new" method="post">
 
   <div class="form-group">
     <label for="freebeesName">Name</label>
@@ -36,7 +36,6 @@
     <input type="time" class="form-control" id="time" placeholder="Enter a freebee time" name="time">
   </div>
 
+  <a type="button" class="btn btn-default btn-primary" href="/freebees">Go back to main page</a>
   <button type="submit" class="btn btn-default btn-success">Create</button>
 </form>
-
-<a type="button" class="btn btn-default btn-primary" href="/freebees">Go back to main page</a>

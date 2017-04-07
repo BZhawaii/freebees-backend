@@ -6,6 +6,8 @@ exports.up = function(knex, Promise) {
     table.string('firstName');
     table.string('lastName');
     table.string('password').notNullable();
+    table.string('email').notNullable();
+    table.boolean('lockedOut').defaultTo(false);
     table.string('sex');
     table.integer('age');
   })

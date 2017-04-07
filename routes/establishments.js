@@ -39,6 +39,40 @@ router.get('/:id', function(req, res, next) {
   }
 });  //closes router.get
 
+router.get('/:id/freebees', function(req, res, next) {
+  const ids = {
+    id: req.params.id
+  }
+  console.log('This is the id', ids);
+  res.render('freebeesForm', ids);
+})  //closes router.get
+
+router.post('/:id/freebees/new', (req, res, next) => {
+  console.log('id from freebees', req.params.id);
+  if(validForm(req.body)) {
+    const freebee = {
+      name: req.body.name,
+      type: req.body.type,
+      category: req.body.category,
+      date: req.body.date,
+      time: req.body.time,
+      establishment_id: req.params.id
+    }
+    console.log('this is freebee', freebee);
+    knex('freebee')
+      .insert(freebee, 'id')
+      .then(ids => {
+        const id = ids[0];
+        res.redirect(`/freebees/${id}`);
+      })
+  } else {
+    res.status(500);
+    res.render('error', {
+      message: 'Invalid user'
+    });
+  }
+})  //closes router.post
+
 router.post('/', (req, res) => {
   console.log(req.body);
   if(validForm(req.body)) {
