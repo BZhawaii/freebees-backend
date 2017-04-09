@@ -1,4 +1,6 @@
 require('dotenv').config();
+// var favicon = require('serve-favicon')
+
 var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
@@ -35,7 +37,7 @@ hbs.registerHelper('select', function(selected, options) {
 })
 
 // uncomment after placing your favicon in /public
-//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
