@@ -87,6 +87,7 @@ router.post('/:id/freebees/new', (req, res, next) => {
 router.post('/', (req, res) => {
   console.log(req.body);
   if(validForm(req.body)) {
+    console.log('valid form');
     const establishment = {
       name: req.body.name,
       password: req.body.password,
@@ -123,7 +124,7 @@ router.put('/:id', (req, res) => {
       about: req.body.about
     }
     knex('establishment')
-    .where('id', parstInt(req.params.id))
+    .where('id', parseInt(req.params.id))
       .update(establishment, 'id')
       .then(function () {
          res.status(200)
