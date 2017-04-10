@@ -8,27 +8,24 @@ function validForm(form) {
           form.name.trim() != '';
 }
 
-/* GET home page. */
+// Get all establishments Get all establishments Get all establishments Get all establishments
 router.get('/', function(req, res, next) {
   knex('establishment')
     .select()
     .then(data => {
-      .res.status(200)
+      res.status(200)
         .json({
           status: 'success',
           data: data,
           message: 'Retrieved all establishments'
         });  //closes json
     })  //closes then
-    .catch(err => {
-      return next(err);
-    })  //closes catch
+    .catch(console.error)
 });  //closes router.get
+// End of Get all establishments End of Get all establishments End of Get all establishments
 
-router.get('/new', function(req, res, next) {
-  res.render('establishmentsForm');
-});  //closes router.get
 
+// Get a single establishment Get a single establishment Get a single establishment
 router.get('/:id', function(req, res, next) {
   const id = req.params.id;
   if(typeof id != 'undefined') {
@@ -36,16 +33,19 @@ router.get('/:id', function(req, res, next) {
     .select()
     .where('id', id)
     .first()
-    .then(establishment => {
-      res.render('establishmentsSingle', establishment);
-    })
-  } else {
-    res.status(500);
-    res.render('error', {
-      message: 'Invalid id'
-    })
+    .then(data => {
+      res.status(200)
+        .json({
+          status: 'success',
+          data: data,
+          message: 'Retrieved single establishment'
+        });  //closes json
+    })  //closes then
+    .catch(console.error)
   }
 });  //closes router.get
+// end of Get a single establishment end of Get a single establishment end of Get a single establishment
+
 
 router.get('/:id/freebees', function(req, res, next) {
   const ids = {
@@ -82,6 +82,8 @@ router.post('/:id/freebees/new', (req, res, next) => {
   }
 })  //closes router.post
 
+
+// Create an establishment Create an establishment Create an establishment
 router.post('/', (req, res) => {
   console.log(req.body);
   if(validForm(req.body)) {
@@ -96,36 +98,20 @@ router.post('/', (req, res) => {
     }
     knex('establishment')
       .insert(establishment, 'id')
-      .then(ids => {
-        const id = ids[0];
-        res.redirect(`/establishments/${id}`);
-      })
-  } else {
-    res.status(500);
-    res.render('error', {
-      message: 'Invalid user'
-    });
+      .then(function () {
+         res.status(200)
+           .json({
+             status: 'success',
+             message: 'Inserted one establishment'
+           });
+       })
+       .catch(console.error);
   }
 })  //closes router.post
+// end of Create an establishment end of Create an establishment end of Create an establishment
 
-router.get('/:id/edit', (req, res) => {
-  const id = req.params.id;
-  if(typeof id != 'undefined') {
-    knex('establishment')
-    .select()
-    .where('id', id)
-    .first()
-    .then(establishment => {
-      res.render('establishmentsEdit', establishment);
-    })
-  } else {
-    res.status(500);
-    res.render('error', {
-      message: 'Invalid id'
-    })
-  }
-})  //closes router.get
 
+// Update an establishment  Update an establishment Update an establishment Update an establishment
 router.put('/:id', (req, res) => {
   console.log(req.body);
   if(validForm(req.body)) {
@@ -137,34 +123,41 @@ router.put('/:id', (req, res) => {
       about: req.body.about
     }
     knex('establishment')
-    .where('id', req.params.id)
+    .where('id', parstInt(req.params.id))
       .update(establishment, 'id')
-      .then(ids => {
-        res.redirect(`/establishments/${req.params.id}`);
-      })
-  } else {
-    res.status(500);
-    res.render('error', {
-      message: 'Invalid user'
-    });
+      .then(function () {
+         res.status(200)
+           .json({
+             status: 'success',
+             message: 'Updated establishment'
+           });
+       })
+      .catch(console.error);
   }
 });  //closes router.put
+// End of Update an establishment End of Update an establishment End of Update an establishment
 
+
+// Delete an establishment Delete an establishment Delete an establishment Delete an establishment
 router.delete('/:id', (req, res) => {
-  const id = req.params.id;
+  const id = parseInt(req.params.id);
   if(typeof id != 'undefined') {
     knex('establishment')
       .where('id', id)
       .del()
-      .then(() => {
-        res.redirect('/establishments')
-      })
-  } else {
-    res.status(500);
-    res.render('error', {
-      message: 'Invalid id'
-    });
+      .then(function (result) {
+         /* jshint ignore:start */
+         res.status(200)
+           .json({
+             status: 'success',
+             message: `Removed establishment`
+           });
+         /* jshint ignore:end */
+       })
+       .catch(console.error);
   }
 })  //closes router.delete
+// End of Delete an establishment End of Delete an establishment End of Delete an establishment
+
 
 module.exports = router;
