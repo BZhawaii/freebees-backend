@@ -6,7 +6,7 @@ const knex = require('../db/knex');
 function validForm(form) {
   return typeof form.name == 'string' &&
           form.name.trim() != '';
-}
+}  //close validForm
 
 // Get all establishments Get all establishments Get all establishments Get all establishments
 router.get('/', function(req, res, next) {
@@ -47,14 +47,28 @@ router.get('/:id', function(req, res, next) {
 // end of Get a single establishment end of Get a single establishment end of Get a single establishment
 
 
+// Get all freebees by bar Get all freebees by bar Get all freebees by bar Get all freebees by bar
 router.get('/:id/freebees', function(req, res, next) {
-  const ids = {
-    id: req.params.id
+  const id = parseInt(req.params.id);
+  if(typeof id != 'undefined') {
+    knex('freebee')
+      .select()
+      .where('establishment_id', id)
+      .then(data => {
+        res.status(200)
+        .json({
+          status: 'success',
+          data: data,
+          message: 'Retrieved all freebees by establishment ids'
+        });  //closes json
+    })  //closes then
+    .catch(console.error)
   }
-  console.log('This is the id', ids);
-  res.render('freebeesForm', ids);
-})  //closes router.get
+});  //closes router.get
+// End of Get all freebees by bar End of Get all freebees by bar End of Get all freebees by bar
 
+
+// Create new freebee from establishments/:id Create new freebee from establishments/:id
 router.post('/:id/freebees/new', (req, res, next) => {
   console.log('id from freebees', req.params.id);
   if(validForm(req.body)) {
@@ -70,17 +84,17 @@ router.post('/:id/freebees/new', (req, res, next) => {
     console.log('this is freebee', freebee);
     knex('freebee')
       .insert(freebee, 'id')
-      .then(ids => {
-        const id = ids[0];
-        res.redirect(`/freebees/${id}`);
-      })
-  } else {
-    res.status(500);
-    res.render('error', {
-      message: 'Invalid user'
-    });
+      .then(function () {
+         res.status(200)
+           .json({
+             status: 'success',
+             message: 'Inserted one establishment'
+           });
+       })
+       .catch(console.error);
   }
-})  //closes router.post
+  })  //closes router.post
+ // End of Create new freebee from establishments/:id End of Create new freebee from establishments/:id
 
 
 // Create an establishment Create an establishment Create an establishment
