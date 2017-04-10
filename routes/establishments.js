@@ -12,9 +12,17 @@ function validForm(form) {
 router.get('/', function(req, res, next) {
   knex('establishment')
     .select()
-    .then(establishmentsGot => {
-      res.render('establishments', { establishmentsGot: establishmentsGot });
-    })
+    .then(data => {
+      .res.status(200)
+        .json({
+          status: 'success',
+          data: data,
+          message: 'Retrieved all establishments'
+        });  //closes json
+    })  //closes then
+    .catch(err => {
+      return next(err);
+    })  //closes catch
 });  //closes router.get
 
 router.get('/new', function(req, res, next) {
